@@ -21,11 +21,13 @@ const saltRounds = 10;
 const postgresdb = knex({
     client: 'pg',
     connection: {
-      host : '127.0.0.1',
-    //   port : 5432, // add your port number of db here
-      user : 'postgres',
-      password : 'geetika1',
-      database : 'smartdetect'
+      connectionString: process.env.DATABASE_URL,
+      ssl:{rejectUnauthorized:false},
+      host : process.env.DATABASE_HOST,
+      port : 5432, // add your port number of db here
+      user : process.env.DATABASE_USER,
+      password : process.env.DATABASE_PW,
+      database : process.env.DATABASE_DB
     }
   });
 
